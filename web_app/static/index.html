@@ -1,0 +1,980 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Official Apple Support — Live Assistant</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 170 170'%3E%3Cpath fill='%231d1d1f' d='M150.37 130.25c-2.45 5.66-5.35 10.87-8.71 15.66-4.58 6.53-8.33 11.05-11.22 13.56-4.48 4.12-9.28 6.23-14.42 6.35-3.69 0-8.14-1.05-13.32-3.18-5.19-2.12-9.97-3.17-14.34-3.17-4.58 0-9.49 1.05-14.75 3.17-5.26 2.13-9.5 3.24-12.74 3.35-4.35.13-9.16-1.9-14.42-6.08-3.7-3.07-7.64-7.8-11.84-14.19-5.7-8.66-10.23-18.78-13.59-30.37-3.36-11.59-5.04-22.75-5.04-33.48 0-14.51 3.52-26.65 10.56-36.42 7.04-9.77 16.03-14.77 26.96-15.02 5.09 0 10.74 1.34 16.94 4.02 6.2 2.68 10.23 4.09 12.09 4.22 1.63 0 5.92-1.46 12.87-4.38 6.95-2.92 12.82-4.22 17.62-3.9 12.98.65 23.36 5.48 31.13 14.5-11.39 6.88-16.96 16.27-16.71 28.17.26 9.4 3.84 17.29 10.74 23.67 6.9 6.38 15.22 10.02 24.96 10.92-2.18 6.74-4.89 13.53-8.13 20.37zm-27.91-105.7c0 7.37-2.73 14.16-8.19 20.37-5.46 6.21-12.16 9.92-20.1 11.13-.26-.87-.4-1.74-.4-2.61 0-7.14 2.87-14.16 8.61-21.06 5.74-6.9 12.44-10.74 20.08-11.53.01 1.22.01 2.45 0 3.7z'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* ============================================================
+       APPLE OFFICIAL SUPPORT THEME (apple.com / support.apple.com)
+       ============================================================ */
+    :root {
+      --apple-blue: #0071e3;
+      --apple-blue-hover: #0077ed;
+      --apple-blue-active: #006edb;
+      --apple-blue-subtle: rgba(0, 113, 227, 0.08);
+      
+      --apple-font: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Helvetica Neue", Helvetica, Arial, sans-serif;
+      
+      --status-auto-bg: #eafaf1;
+      --status-auto-text: #1b873f;
+      --status-auto-border: #bbf0d0;
+      
+      --status-esc-bg: #fdf2f2;
+      --status-esc-text: #cf2222;
+      --status-esc-border: #fbc4c4;
+    }
+
+    /* APPLE OFFICIAL LIGHT MODE */
+    html[data-theme="light"] {
+      --bg-global-nav: rgba(22, 22, 23, 0.95);
+      --text-global-nav: #e8e8ed;
+      
+      --bg-canvas: #f5f5f7;
+      --bg-surface: #ffffff;
+      --bg-subtle: #fbfbfd;
+      --bg-diag-card: #f5f5f7;
+      --bg-input: #ffffff;
+      
+      --text-primary: #1d1d1f;
+      --text-secondary: #515154;
+      --text-muted: #86868b;
+      --text-dim: #a1a1a6;
+      
+      --border-color: #d2d2d7;
+      --border-light: #e5e5ea;
+      
+      --user-bubble-bg: #0071e3;
+      --user-bubble-text: #ffffff;
+      
+      --card-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+      --card-shadow-hover: 0 6px 24px rgba(0, 0, 0, 0.08);
+      --input-shadow: 0 2px 14px rgba(0, 0, 0, 0.06);
+    }
+
+    /* APPLE OFFICIAL DARK MODE (DEFAULT) */
+    html[data-theme="dark"] {
+      --bg-global-nav: rgba(0, 0, 0, 0.95);
+      --text-global-nav: #e8e8ed;
+      
+      --bg-canvas: #000000;
+      --bg-surface: #161617;
+      --bg-subtle: #1c1c1e;
+      --bg-diag-card: #1c1c1e;
+      --bg-input: #1c1c1e;
+      
+      --text-primary: #f5f5f7;
+      --text-secondary: #a1a1a6;
+      --text-muted: #86868b;
+      --text-dim: #6e6e73;
+      
+      --border-color: #38383a;
+      --border-light: #2c2c2e;
+      
+      --user-bubble-bg: #0071e3;
+      --user-bubble-text: #ffffff;
+      
+      --card-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+      --card-shadow-hover: 0 6px 28px rgba(0, 0, 0, 0.6);
+      --input-shadow: 0 2px 14px rgba(0, 0, 0, 0.3);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: var(--apple-font);
+      background-color: var(--bg-canvas);
+      color: var(--text-primary);
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* ============================================================
+       APPLE GLOBAL NAVIGATION BAR
+       ============================================================ */
+    .global-nav {
+      background: var(--bg-global-nav);
+      backdrop-filter: saturate(180%) blur(20px);
+      -webkit-backdrop-filter: saturate(180%) blur(20px);
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 28px;
+      flex-shrink: 0;
+      z-index: 100;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: var(--text-global-nav);
+    }
+
+    .apple-icon-svg {
+      width: 17px;
+      height: 17px;
+      fill: #ffffff;
+    }
+
+    .nav-title {
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: -0.01em;
+      color: #ffffff;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      list-style: none;
+    }
+
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+    }
+
+    .nav-links a {
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 0.78rem;
+      text-decoration: none;
+      transition: color 0.15s ease;
+      font-weight: 400;
+    }
+
+    .nav-links a:hover {
+      color: #ffffff;
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .btn-nav-theme {
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      font-size: 0.74rem;
+      font-weight: 500;
+      padding: 5px 12px;
+      border-radius: 980px;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+
+    .btn-nav-theme:hover {
+      background: rgba(255, 255, 255, 0.22);
+    }
+
+    /* ============================================================
+       APPLE SUPPORT PORTAL WORKSPACE
+       ============================================================ */
+    .support-container {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      max-width: 960px;
+      width: 100%;
+      margin: 0 auto;
+      height: calc(100vh - 48px);
+      padding: 16px 20px;
+      gap: 14px;
+    }
+
+    /* Portal Header & Quick Topics */
+    .portal-hero {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      flex-shrink: 0;
+      padding-bottom: 4px;
+    }
+
+    .portal-hero h2 {
+      font-size: 1.4rem;
+      font-weight: 700;
+      letter-spacing: -0.025em;
+      color: var(--text-primary);
+    }
+
+    .portal-hero p {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      font-weight: 400;
+    }
+
+    /* Apple Official Support Category Chips */
+    .topics-strip {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      scrollbar-width: none;
+      padding-top: 4px;
+    }
+
+    .topics-strip::-webkit-scrollbar {
+      display: none;
+    }
+
+    .topic-chip {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      color: var(--text-primary);
+      padding: 6px 14px;
+      border-radius: 980px;
+      font-size: 0.78rem;
+      font-weight: 500;
+      white-space: nowrap;
+      cursor: pointer;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
+      transition: all 0.15s ease;
+    }
+
+    .topic-chip:hover {
+      border-color: var(--apple-blue);
+      color: var(--apple-blue);
+      box-shadow: 0 2px 8px rgba(0, 113, 227, 0.15);
+      transform: translateY(-1px);
+    }
+
+    /* ============================================================
+       CHAT VIEWPORT WITH WHATSAPP-STYLE TWO-SIDED ALIGNMENT
+       ============================================================ */
+    .messages-viewport {
+      flex: 1;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      padding: 8px 6px 8px 0;
+    }
+
+    .messages-viewport::-webkit-scrollbar {
+      width: 6px;
+    }
+    .messages-viewport::-webkit-scrollbar-thumb {
+      background: var(--border-color);
+      border-radius: 4px;
+    }
+
+    /* WhatsApp Two-Sided Message Rows */
+    .message-card-row {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      animation: appleFadeIn 0.2s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+
+    @keyframes appleFadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* USER MESSAGE: STRICTLY RIGHT-ALIGNED (WHATSAPP ALIGNMENT) */
+    .message-card-row.customer {
+      align-items: flex-end;
+    }
+
+    .message-card-row.customer .card-bubble {
+      background: var(--user-bubble-bg);
+      color: var(--user-bubble-text);
+      padding: 12px 18px;
+      border-radius: 18px 18px 4px 18px;
+      font-size: 0.92rem;
+      line-height: 1.5;
+      font-weight: 400;
+      box-shadow: 0 2px 8px rgba(0, 113, 227, 0.2);
+      max-width: 75%;
+      word-wrap: break-word;
+    }
+
+    .message-card-row.customer .timestamp-line {
+      text-align: right;
+      margin-right: 4px;
+    }
+
+    /* ASSISTANT MESSAGE: STRICTLY LEFT-ALIGNED (WHATSAPP ALIGNMENT) */
+    .message-card-row.copilot {
+      align-items: flex-start;
+    }
+
+    .message-card-row.copilot .card-bubble {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: 18px 18px 18px 4px;
+      padding: 16px 20px;
+      box-shadow: var(--card-shadow);
+      max-width: 82%;
+      width: fit-content;
+    }
+
+    .message-card-row.copilot .timestamp-line {
+      text-align: left;
+      margin-left: 4px;
+    }
+
+    .card-header-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 10px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--border-light);
+    }
+
+    .card-header-bar .support-author {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+
+    .card-header-bar .author-badge {
+      width: 18px;
+      height: 18px;
+      background: var(--text-primary);
+      color: var(--bg-surface);
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .card-header-bar .author-badge svg {
+      width: 11px;
+      height: 11px;
+      fill: currentColor;
+    }
+
+    .card-reply-text {
+      font-size: 0.93rem;
+      line-height: 1.6;
+      color: var(--text-primary);
+      word-wrap: break-word;
+    }
+
+    .card-meta-pills {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+      padding-top: 10px;
+      border-top: 1px solid var(--border-light);
+    }
+
+    .pill-badge {
+      font-size: 0.72rem;
+      font-weight: 600;
+      padding: 3px 10px;
+      border-radius: 980px;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .pill-auto {
+      background: var(--status-auto-bg);
+      color: var(--status-auto-text);
+      border: 1px solid var(--status-auto-border);
+    }
+
+    .pill-escalate {
+      background: var(--status-esc-bg);
+      color: var(--status-esc-text);
+      border: 1px solid var(--status-esc-border);
+    }
+
+    .pill-intent {
+      background: var(--bg-subtle);
+      border: 1px solid var(--border-color);
+      color: var(--text-secondary);
+      font-size: 0.72rem;
+    }
+
+    /* Structured Diagnostic Accordion - Small & Compact Button */
+    .diagnostic-accordion {
+      margin-top: 8px;
+      background: var(--bg-diag-card);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      overflow: hidden;
+      width: fit-content;
+      max-width: 100%;
+      transition: all 0.2s ease;
+    }
+
+    details.diagnostic-accordion[open] {
+      width: 100%;
+      border-radius: 8px;
+    }
+
+    .diag-summary-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 4px 10px;
+      cursor: pointer;
+      user-select: none;
+      font-size: 0.70rem;
+      font-weight: 500;
+      color: var(--apple-blue);
+      list-style: none;
+      outline: none;
+      background: transparent;
+      transition: background 0.15s ease;
+    }
+
+    .diag-summary-btn::-webkit-details-marker {
+      display: none;
+    }
+
+    .diag-summary-btn:hover {
+      background: var(--apple-blue-subtle);
+    }
+
+    .diag-summary-left {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .diag-summary-left svg {
+      width: 11px;
+      height: 11px;
+    }
+
+    .diag-summary-right {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .severity-tag {
+      font-size: 0.62rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      background: var(--bg-surface);
+      padding: 1px 6px;
+      border-radius: 4px;
+      border: 1px solid var(--border-light);
+    }
+
+    .chevron-icon {
+      font-size: 0.55rem;
+      transition: transform 0.2s ease;
+      color: var(--text-muted);
+      display: inline-block;
+    }
+
+    details[open] .chevron-icon {
+      transform: rotate(180deg);
+    }
+
+    .diag-content-body {
+      padding: 8px 12px 10px 12px;
+      border-top: 1px solid var(--border-light);
+      font-size: 0.74rem;
+      line-height: 1.5;
+    }
+
+    .diag-item {
+      color: var(--text-secondary);
+      margin-bottom: 4px;
+    }
+
+    .diag-item strong {
+      color: var(--text-primary);
+      font-weight: 600;
+    }
+
+    .action-steps-box {
+      margin-top: 6px;
+      padding-top: 6px;
+      border-top: 1px solid var(--border-light);
+    }
+
+    .action-steps-list {
+      margin-left: 18px;
+      margin-top: 3px;
+      color: var(--text-secondary);
+    }
+
+    .action-steps-list li {
+      margin-bottom: 2px;
+    }
+
+    /* Official Apple Support Knowledge Base Links */
+    .citations-row {
+      margin-top: 10px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .apple-kb-link {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      color: var(--apple-blue);
+      font-size: 0.76rem;
+      font-weight: 600;
+      padding: 5px 12px;
+      border-radius: 980px;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      transition: all 0.15s ease;
+    }
+
+    .apple-kb-link:hover {
+      background: var(--apple-blue-subtle);
+      border-color: var(--apple-blue);
+      color: var(--apple-blue-hover);
+    }
+
+    .timestamp-line {
+      font-size: 0.7rem;
+      color: var(--text-dim);
+      margin-top: 4px;
+    }
+
+    /* Typing Box (Left-Aligned) */
+    .typing-row {
+      display: none;
+      align-self: flex-start;
+      margin-bottom: 4px;
+    }
+
+    .typing-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      padding: 10px 18px;
+      border-radius: 18px 18px 18px 4px;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: var(--card-shadow);
+    }
+
+    /* ============================================================
+       APPLE SEARCH & COMPOSER BAR (support.apple.com style)
+       ============================================================ */
+    .composer-container {
+      background: var(--bg-input);
+      border: 1px solid var(--border-color);
+      border-radius: 980px;
+      padding: 6px 8px 6px 18px;
+      box-shadow: var(--input-shadow);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-shrink: 0;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .composer-container:focus-within {
+      border-color: var(--apple-blue);
+      box-shadow: 0 0 0 4px var(--apple-blue-subtle);
+    }
+
+    .search-input {
+      flex: 1;
+      background: transparent;
+      border: none;
+      font-size: 0.92rem;
+      font-family: inherit;
+      color: var(--text-primary);
+    }
+
+    .search-input:focus {
+      outline: none;
+    }
+
+    .search-input::placeholder {
+      color: var(--text-dim);
+    }
+
+    .btn-apple-send {
+      background: var(--apple-blue);
+      border: none;
+      color: #ffffff;
+      font-size: 0.85rem;
+      font-weight: 500;
+      padding: 9px 20px;
+      border-radius: 980px;
+      cursor: pointer;
+      transition: background 0.15s ease;
+      flex-shrink: 0;
+    }
+
+    .btn-apple-send:hover {
+      background: var(--apple-blue-hover);
+    }
+
+    .btn-apple-send:active {
+      background: var(--apple-blue-active);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Apple Global Navigation Bar -->
+  <nav class="global-nav">
+    <a href="https://support.apple.com" target="_blank" class="nav-brand" title="Official Apple Support">
+      <svg class="apple-icon-svg" viewBox="0 0 170 170">
+        <path d="M150.37 130.25c-2.45 5.66-5.35 10.87-8.71 15.66-4.58 6.53-8.33 11.05-11.22 13.56-4.48 4.12-9.28 6.23-14.42 6.35-3.69 0-8.14-1.05-13.32-3.18-5.19-2.12-9.97-3.17-14.34-3.17-4.58 0-9.49 1.05-14.75 3.17-5.26 2.13-9.5 3.24-12.74 3.35-4.35.13-9.16-1.9-14.42-6.08-3.7-3.07-7.64-7.8-11.84-14.19-5.7-8.66-10.23-18.78-13.59-30.37-3.36-11.59-5.04-22.75-5.04-33.48 0-14.51 3.52-26.65 10.56-36.42 7.04-9.77 16.03-14.77 26.96-15.02 5.09 0 10.74 1.34 16.94 4.02 6.2 2.68 10.23 4.09 12.09 4.22 1.63 0 5.92-1.46 12.87-4.38 6.95-2.92 12.82-4.22 17.62-3.9 12.98.65 23.36 5.48 31.13 14.5-11.39 6.88-16.96 16.27-16.71 28.17.26 9.4 3.84 17.29 10.74 23.67 6.9 6.38 15.22 10.02 24.96 10.92-2.18 6.74-4.89 13.53-8.13 20.37zm-27.91-105.7c0 7.37-2.73 14.16-8.19 20.37-5.46 6.21-12.16 9.92-20.1 11.13-.26-.87-.4-1.74-.4-2.61 0-7.14 2.87-14.16 8.61-21.06 5.74-6.9 12.44-10.74 20.08-11.53.01 1.22.01 2.45 0 3.7z"/>
+      </svg>
+      <span class="nav-title">Support</span>
+    </a>
+
+    <ul class="nav-links">
+      <li><a href="https://support.apple.com/iphone" target="_blank">iPhone</a></li>
+      <li><a href="https://support.apple.com/mac" target="_blank">Mac</a></li>
+      <li><a href="https://support.apple.com/ipad" target="_blank">iPad</a></li>
+      <li><a href="https://support.apple.com/watch" target="_blank">Watch</a></li>
+      <li><a href="https://iforgot.apple.com" target="_blank">Apple ID</a></li>
+      <li><a href="https://support.apple.com/billing" target="_blank">Billing</a></li>
+      <li><a href="https://support.apple.com/repair" target="_blank">Repairs</a></li>
+    </ul>
+
+    <div class="nav-actions">
+      <button class="btn-nav-theme" id="theme-btn" onclick="toggleTheme()">Light Mode</button>
+      <button class="btn-nav-theme" onclick="resetThread()">Reset</button>
+    </div>
+  </nav>
+
+  <!-- Support Portal Workspace -->
+  <main class="support-container">
+    
+    <!-- Hero & Search Topics -->
+    <section class="portal-hero">
+      <h2>Apple Support Assistant</h2>
+      <p>Official automated resolution assistant powered by Apple knowledge base guidelines.</p>
+
+      <!-- Apple Support Topic Pills -->
+      <div class="topics-strip">
+        <button class="topic-chip" onclick="sendTopicQuery('My iPhone battery drains 30% in one hour and gets hot after the update')">Battery & Charging</button>
+        <button class="topic-chip" onclick="sendTopicQuery('Dropped my iPhone 8 on concrete and the back glass shattered into pieces')">Hardware & Screen Damage</button>
+        <button class="topic-chip" onclick="sendTopicQuery('My Apple ID is locked for security and I lost my 2FA phone number')">Apple Account & 2FA</button>
+        <button class="topic-chip" onclick="sendTopicQuery('Charged $49.99 for a subscription I canceled during free trial, refund please')">Subscriptions & Refunds</button>
+        <button class="topic-chip" onclick="sendTopicQuery('How do I transfer photos and WhatsApp from Samsung to my new iPhone 13?')">Android Data Migration</button>
+        <button class="topic-chip" onclick="sendTopicQuery('How do I pair my new Apple Watch with my iPhone 12?')">Apple Watch Pairing</button>
+      </div>
+    </section>
+
+    <!-- Support Thread Messages (WhatsApp-style 2-sided alignment) -->
+    <div class="messages-viewport" id="messages-area">
+      <!-- Default Initial Card (Left-Aligned Assistant) -->
+      <div class="message-card-row copilot">
+        <div class="card-bubble">
+          <div class="card-header-bar">
+            <div class="support-author">
+              <div class="author-badge">
+                <svg viewBox="0 0 170 170"><path d="M150.37 130.25c-2.45 5.66-5.35 10.87-8.71 15.66-4.58 6.53-8.33 11.05-11.22 13.56-4.48 4.12-9.28 6.23-14.42 6.35-3.69 0-8.14-1.05-13.32-3.18-5.19-2.12-9.97-3.17-14.34-3.17-4.58 0-9.49 1.05-14.75 3.17-5.26 2.13-9.5 3.24-12.74 3.35-4.35.13-9.16-1.9-14.42-6.08-3.7-3.07-7.64-7.8-11.84-14.19-5.7-8.66-10.23-18.78-13.59-30.37-3.36-11.59-5.04-22.75-5.04-33.48 0-14.51 3.52-26.65 10.56-36.42 7.04-9.77 16.03-14.77 26.96-15.02 5.09 0 10.74 1.34 16.94 4.02 6.2 2.68 10.23 4.09 12.09 4.22 1.63 0 5.92-1.46 12.87-4.38 6.95-2.92 12.82-4.22 17.62-3.9 12.98.65 23.36 5.48 31.13 14.5-11.39 6.88-16.96 16.27-16.71 28.17.26 9.4 3.84 17.29 10.74 23.67 6.9 6.38 15.22 10.02 24.96 10.92-2.18 6.74-4.89 13.53-8.13 20.37zm-27.91-105.7c0 7.37-2.73 14.16-8.19 20.37-5.46 6.21-12.16 9.92-20.1 11.13-.26-.87-.4-1.74-.4-2.61 0-7.14 2.87-14.16 8.61-21.06 5.74-6.9 12.44-10.74 20.08-11.53.01 1.22.01 2.45 0 3.7z"/></svg>
+              </div>
+              <span>Official Apple Support</span>
+            </div>
+            <span class="pill-badge pill-auto">System Active</span>
+          </div>
+          <div class="card-reply-text">
+            Welcome to Apple Support. Tell us what you're experiencing with your device or account to receive official diagnostics, troubleshooting steps, or repair options.
+          </div>
+        </div>
+        <div class="timestamp-line">Ready</div>
+      </div>
+
+      <!-- Typing Indicator (Left-Aligned Assistant) -->
+      <div class="typing-row" id="typing-row">
+        <div class="typing-card">
+          <span>Apple Support Assistant is researching diagnostics...</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Apple Support Input Bar (support.apple.com style) -->
+    <div class="composer-container">
+      <input 
+        type="text" 
+        id="user-input" 
+        class="search-input" 
+        placeholder="Describe your issue (e.g., 'My iPhone 12 battery is draining fast')..." 
+        autocomplete="off"
+        onkeydown="if(event.key === 'Enter') handleSend();"
+      />
+      <button class="btn-apple-send" onclick="handleSend()">Get Help</button>
+    </div>
+
+  </main>
+
+  <script>
+    const messagesArea = document.getElementById('messages-area');
+    const userInput = document.getElementById('user-input');
+    const themeBtn = document.getElementById('theme-btn');
+
+    /* Apple Theme Toggle */
+    function initTheme() {
+      const saved = localStorage.getItem('apple_support_portal_theme') || 'dark';
+      setTheme(saved);
+    }
+
+    function toggleTheme() {
+      const current = document.documentElement.getAttribute('data-theme') || 'dark';
+      const next = current === 'light' ? 'dark' : 'light';
+      setTheme(next);
+      localStorage.setItem('apple_support_portal_theme', next);
+    }
+
+    function setTheme(t) {
+      document.documentElement.setAttribute('data-theme', t);
+      themeBtn.textContent = t === 'light' ? 'Dark Mode' : 'Light Mode';
+    }
+
+    function getTimeString() {
+      const now = new Date();
+      return now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+    }
+
+    function scrollToBottom() {
+      messagesArea.scrollTop = messagesArea.scrollHeight;
+    }
+
+    function getTypingRow() {
+      return document.getElementById('typing-row');
+    }
+
+    function sendTopicQuery(text) {
+      userInput.value = text;
+      handleSend();
+    }
+
+    let conversationHistory = [];
+
+    function resetThread() {
+      conversationHistory = [];
+      messagesArea.innerHTML = `
+        <div class="message-card-row copilot">
+          <div class="card-bubble">
+            <div class="card-header-bar">
+              <div class="support-author">
+                <div class="author-badge">
+                  <svg viewBox="0 0 170 170"><path d="M150.37 130.25c-2.45 5.66-5.35 10.87-8.71 15.66-4.58 6.53-8.33 11.05-11.22 13.56-4.48 4.12-9.28 6.23-14.42 6.35-3.69 0-8.14-1.05-13.32-3.18-5.19-2.12-9.97-3.17-14.34-3.17-4.58 0-9.49 1.05-14.75 3.17-5.26 2.13-9.5 3.24-12.74 3.35-4.35.13-9.16-1.9-14.42-6.08-3.7-3.07-7.64-7.8-11.84-14.19-5.7-8.66-10.23-18.78-13.59-30.37-3.36-11.59-5.04-22.75-5.04-33.48 0-14.51 3.52-26.65 10.56-36.42 7.04-9.77 16.03-14.77 26.96-15.02 5.09 0 10.74 1.34 16.94 4.02 6.2 2.68 10.23 4.09 12.09 4.22 1.63 0 5.92-1.46 12.87-4.38 6.95-2.92 12.82-4.22 17.62-3.9 12.98.65 23.36 5.48 31.13 14.5-11.39 6.88-16.96 16.27-16.71 28.17.26 9.4 3.84 17.29 10.74 23.67 6.9 6.38 15.22 10.02 24.96 10.92-2.18 6.74-4.89 13.53-8.13 20.37zm-27.91-105.7c0 7.37-2.73 14.16-8.19 20.37-5.46 6.21-12.16 9.92-20.1 11.13-.26-.87-.4-1.74-.4-2.61 0-7.14 2.87-14.16 8.61-21.06 5.74-6.9 12.44-10.74 20.08-11.53.01 1.22.01 2.45 0 3.7z"/></svg>
+                </div>
+                <span>Official Apple Support</span>
+              </div>
+              <span class="pill-badge pill-auto">Thread Reset</span>
+            </div>
+            <div class="card-reply-text">
+              How can Apple Support help you today? Please enter your question below.
+            </div>
+          </div>
+          <div class="timestamp-line">${getTimeString()}</div>
+        </div>
+        <div class="typing-row" id="typing-row" style="display: none;">
+          <div class="typing-card">
+            <span>Apple Support Assistant is researching diagnostics...</span>
+          </div>
+        </div>
+      `;
+      userInput.value = '';
+      userInput.disabled = false;
+      userInput.focus();
+      scrollToBottom();
+    }
+
+    async function handleSend() {
+      const text = userInput.value.trim();
+      if (!text) return;
+
+      userInput.value = '';
+      appendCustomerMessage(text);
+      conversationHistory.push({ role: 'user', content: text });
+
+      const tr = getTypingRow();
+      if (tr) {
+        tr.style.display = 'flex';
+        messagesArea.appendChild(tr);
+      }
+      scrollToBottom();
+      userInput.disabled = true;
+
+      try {
+        const resp = await fetch('/api/process', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ 
+            customer_query: text,
+            history: conversationHistory
+          })
+        });
+        const data = await resp.json();
+
+        if (tr) tr.style.display = 'none';
+        conversationHistory.push({ role: 'assistant', content: data.draft_reply });
+        appendSupportResolution(data);
+      } catch (err) {
+        if (tr) tr.style.display = 'none';
+        appendErrorMessage('Unable to connect to Apple Support service. Please check your connection and retry.');
+      } finally {
+        userInput.disabled = false;
+        userInput.focus();
+      }
+
+      scrollToBottom();
+    }
+
+    /* RIGHT-ALIGNED User Message (WhatsApp Alignment + Apple Theme) */
+    function appendCustomerMessage(text) {
+      const row = document.createElement('div');
+      row.className = 'message-card-row customer';
+      row.innerHTML = `
+        <div class="card-bubble">
+          ${escapeHtml(text)}
+        </div>
+        <div class="timestamp-line">${getTimeString()}</div>
+      `;
+      const tr = getTypingRow();
+      if (tr && tr.parentNode === messagesArea) {
+        messagesArea.insertBefore(row, tr);
+      } else {
+        messagesArea.appendChild(row);
+      }
+      scrollToBottom();
+    }
+
+    /* LEFT-ALIGNED Support Message (WhatsApp Alignment + Apple Theme) */
+    function appendSupportResolution(data) {
+      const row = document.createElement('div');
+      row.className = 'message-card-row copilot';
+
+      const isAuto = data.decision === 'AUTO_HANDLE';
+      const badgeClass = isAuto ? 'pill-auto' : 'pill-escalate';
+      const badgeLabel = isAuto 
+        ? `Resolved via Self-Service (${Math.round(data.intent_confidence * 100)}% Match)`
+        : `Escalated to Specialist (${escapeHtml(data.escalation_reason || data.predicted_intent)})`;
+
+      let citationsHtml = '';
+      if (data.grounding_citations && data.grounding_citations.length > 0) {
+        citationsHtml = '<div class="citations-row">' + 
+          data.grounding_citations.map(url => {
+            if (url === 'apple_dm_link') return '<span class="apple-kb-link">Apple Direct Message Support &rarr;</span>';
+            const cleanDomain = url.replace('https://', '');
+            return `<a class="apple-kb-link" href="${url}" target="_blank">${cleanDomain} &rarr;</a>`;
+          }).join('') +
+          '</div>';
+      }
+
+      const diag = data.diagnostic || {};
+      const signalsList = diag.detected_signals ? diag.detected_signals.join(', ') : 'Technical inquiry';
+      const actionStepsHtml = diag.recommended_action_plan ? diag.recommended_action_plan.map(s => `<li>${escapeHtml(s)}</li>`).join('') : '';
+
+      const diagnosticHtml = `
+        <details class="diagnostic-accordion">
+          <summary class="diag-summary-btn">
+            <div class="diag-summary-left">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+              <span>More Details & Diagnostics</span>
+            </div>
+            <div class="diag-summary-right">
+              <span class="severity-tag">${escapeHtml(diag.severity_level || 'NORMAL')}</span>
+              <span class="chevron-icon">&#9660;</span>
+            </div>
+          </summary>
+          <div class="diag-content-body">
+            <div class="diag-item"><strong>Identified Issue:</strong> ${escapeHtml(signalsList)}</div>
+            <div class="diag-item"><strong>Support Protocol:</strong> ${escapeHtml(diag.policy_risk_assessment || data.decision_explanation)}</div>
+            ${actionStepsHtml ? `<div class="action-steps-box"><strong>Official Recommended Steps:</strong><ul class="action-steps-list">${actionStepsHtml}</ul></div>` : ''}
+          </div>
+        </details>
+      `;
+
+      row.innerHTML = `
+        <div class="card-bubble">
+          <div class="card-header-bar">
+            <div class="support-author">
+              <div class="author-badge">
+                <svg viewBox="0 0 170 170"><path d="M150.37 130.25c-2.45 5.66-5.35 10.87-8.71 15.66-4.58 6.53-8.33 11.05-11.22 13.56-4.48 4.12-9.28 6.23-14.42 6.35-3.69 0-8.14-1.05-13.32-3.18-5.19-2.12-9.97-3.17-14.34-3.17-4.58 0-9.49 1.05-14.75 3.17-5.26 2.13-9.5 3.24-12.74 3.35-4.35.13-9.16-1.9-14.42-6.08-3.7-3.07-7.64-7.8-11.84-14.19-5.7-8.66-10.23-18.78-13.59-30.37-3.36-11.59-5.04-22.75-5.04-33.48 0-14.51 3.52-26.65 10.56-36.42 7.04-9.77 16.03-14.77 26.96-15.02 5.09 0 10.74 1.34 16.94 4.02 6.2 2.68 10.23 4.09 12.09 4.22 1.63 0 5.92-1.46 12.87-4.38 6.95-2.92 12.82-4.22 17.62-3.9 12.98.65 23.36 5.48 31.13 14.5-11.39 6.88-16.96 16.27-16.71 28.17.26 9.4 3.84 17.29 10.74 23.67 6.9 6.38 15.22 10.02 24.96 10.92-2.18 6.74-4.89 13.53-8.13 20.37zm-27.91-105.7c0 7.37-2.73 14.16-8.19 20.37-5.46 6.21-12.16 9.92-20.1 11.13-.26-.87-.4-1.74-.4-2.61 0-7.14 2.87-14.16 8.61-21.06 5.74-6.9 12.44-10.74 20.08-11.53.01 1.22.01 2.45 0 3.7z"/></svg>
+              </div>
+              <span>Official Apple Support</span>
+            </div>
+            <span class="pill-badge ${badgeClass}">${badgeLabel}</span>
+          </div>
+
+          <div class="card-reply-text">
+            ${escapeHtml(data.draft_reply)}
+          </div>
+
+          <div class="card-meta-pills">
+            <span class="pill-badge pill-intent">Category: ${escapeHtml(data.predicted_intent)}</span>
+            <span style="font-size: 0.72rem; color: var(--text-muted); margin-left: auto;">Latency: ${(data.latency_ms || 1.4).toFixed(1)}ms</span>
+          </div>
+
+          ${diagnosticHtml}
+          ${citationsHtml}
+        </div>
+        <div class="timestamp-line">${getTimeString()}</div>
+      `;
+
+      const tr = getTypingRow();
+      if (tr && tr.parentNode === messagesArea) {
+        messagesArea.insertBefore(row, tr);
+      } else {
+        messagesArea.appendChild(row);
+      }
+      scrollToBottom();
+    }
+
+    function appendErrorMessage(msg) {
+      const row = document.createElement('div');
+      row.className = 'message-card-row copilot';
+      row.innerHTML = `
+        <div class="card-bubble" style="border-left: 3px solid #cf2222;">
+          <div style="color: #cf2222; font-weight: 500;">
+            ${escapeHtml(msg)}
+          </div>
+        </div>
+        <div class="timestamp-line">${getTimeString()}</div>
+      `;
+      const tr = getTypingRow();
+      if (tr && tr.parentNode === messagesArea) {
+        messagesArea.insertBefore(row, tr);
+      } else {
+        messagesArea.appendChild(row);
+      }
+      scrollToBottom();
+    }
+
+    function escapeHtml(str) {
+      return str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;");
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      initTheme();
+      userInput.focus();
+    });
+  </script>
+</body>
+</html>

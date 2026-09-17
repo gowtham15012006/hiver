@@ -1,0 +1,4 @@
+System,Intent Accuracy (%),Intent Macro-F1 (%),Escalation Accuracy (%),Escalation F1 (%),False Auto-Handle Rate (%),Judge Quality (1-5),Judge Pass Rate (%),Avg Latency (ms)
+Baseline 1 (Trivial),29.5,31.22,63.5,69.71,23.64,2.55,0.5,0.01
+Baseline 2 (Simple Zero-Shot),44.5,41.85,44.5,42.49,62.73,3.13,0.0,1.16
+Proposed Agent (RAG + Guardrails),76.0,71.53,82.5,86.27,0.0,3.82,71.5,4.95
