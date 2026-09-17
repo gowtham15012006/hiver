@@ -1,8 +1,9 @@
-https://drive.google.com/file/d/1DXZRsEAjviwlHaebVI3Zu1XqRFz4vw7F/view?usp=sharing
 # Apple Support AI Agent — Production Evaluation & System Benchmark
 
 > **Hiver SDE Intern — Take-Home Assignment Submission**  
 > An autonomous AI customer support system for `@AppleSupport` that classifies intents, synthesizes RAG-grounded replies, makes auditable human-escalation decisions, and proves its reliability through rigorous automated and human-aligned evaluations.
+
+📹 **Demo Video**: [Watch System Walkthrough & Dashboard Demo on Google Drive](https://drive.google.com/file/d/1N7Id2arxlGQ9bYcB1jtEM1Y6jmtr_Owl/view?usp=sharing)
 
 ---
 
@@ -152,15 +153,4 @@ hiver/
 
 ---
 
-## 📖 In-Depth Report & Technical Sections
 
-For the complete technical report, please read [REPORT.md](REPORT.md), which includes:
-- **Section 1**: Problem framing — what "good" means for Apple and what we chose NOT to build (no in-chat credential resets, no autonomous financial refunds).
-- **Section 2**: Taxonomy decision boundaries.
-- **Section 3**: Headline benchmark vs. Baseline 1 and Baseline 2.
-- **Section 4**: LLM-as-Judge validation and human alignment proof.
-- **Section 5**: Top 5 failure modes with real examples, root-cause hypotheses, and mitigations.
-- **Section 6**: *"What is misleading about my headline number?"* (Mandatory section analyzing over-escalation vs under-escalation trade-offs and single-turn bias).
-- **Section 7**: 14 non-obvious engineering & design decisions with rationales.
-- **Section 8**: 1-week future roadmap.
->>>>>>> f85be9c (Initial commit: Production AI Customer Support Agent for Apple Support (Hiver Take-Home))
